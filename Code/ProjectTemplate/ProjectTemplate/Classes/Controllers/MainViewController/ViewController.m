@@ -28,7 +28,7 @@
 {
     [super viewDidLoad];
     
-    [self testRss];
+    [self testRss]; 
 }
 
 
