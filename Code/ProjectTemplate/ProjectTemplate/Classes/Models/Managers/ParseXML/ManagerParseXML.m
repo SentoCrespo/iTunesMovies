@@ -141,8 +141,19 @@
     // Capture the category label attribute
     else if ([elementName isEqualToString:categoryTag]) {
         [_dictElement setObject:[self stringByUnescapingAndCollapsingSpaces:attributeDict[categoryTermAttr]]
-                         forKey:categoryTermAttr];
+                         forKey:categoryTag];
     }
+
+    // Capture the identifier attribute
+    else if ([elementName isEqualToString:identifierTag]) {
+        NSString *identifier = attributeDict[identifierAttr];
+        NSNumberFormatter *numberFormatter = [NSNumberFormatter new];
+        [numberFormatter setNumberStyle:NSNumberFormatterNoStyle];
+        NSNumber *identifierNumber = [numberFormatter numberFromString:identifier];
+        [_dictElement setObject:identifierNumber
+                         forKey:identifierAttr];
+    }
+
     
     _currentElement = elementName;
 }
@@ -158,6 +169,7 @@
     
     
     // Add data to current parsed element
+    
     else if ([elementName isEqualToString:titleTag]) {
         [_dictElement setObject:[self stringByUnescapingAndCollapsingSpaces:_foundValue]
                          forKey:titleTag];

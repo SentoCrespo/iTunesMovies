@@ -132,6 +132,7 @@
 - (void) test_Parse_Success_Contains_All_Data
 {
     // Given
+    NSInteger identifier = 526323818;
     NSString *name = @"Apollo 13";
     NSString *summary = @"Varados a 330.000 kilómetros de la Tierra en una nave averiada, los astronautas Jim Lovell (Hanks), Fred Haise (Paxton) y Jack Swigert (Bacon) luchan desesperadamente por sobrevivir. Mientras tanto, en el centro de control, el astronauta Ken Mattingly (Sinise), el director de vuelo Gene Kranz (Harris) y el heroico personal de tierra pugnan por traerlos de vuelta.";
     NSString *artist = @"Ron Howard";
@@ -147,6 +148,9 @@
                             successBlock:^(id data) {
                                 NSArray *dataArray = (NSArray *) data;
                                 NSDictionary *firstItem = [dataArray firstObject];
+                                XCTAssertEqualObjects(firstItem[identifierAttr],
+                                                      @(identifier),
+                                                      @"Identifier should be parsed correctly");
                                 XCTAssertEqualObjects(firstItem[titleTag],
                                                       name,
                                                       @"Title should be parsed correctly");
@@ -162,7 +166,7 @@
                                 XCTAssertEqualObjects(firstItem[releaseDateTag],
                                                       releaseDate,
                                                       @"Release date should be parsed correctly");
-                                XCTAssertEqualObjects(firstItem[categoryTermAttr],
+                                XCTAssertEqualObjects(firstItem[categoryTag],
                                                       categoryTerm,
                                                       @"Category date should be parsed correctly");
                                 [expectation fulfill];

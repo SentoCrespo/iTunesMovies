@@ -28,7 +28,7 @@
 {
     [super viewDidLoad];
     
-    [self testRss]; 
+    [self testRss];
 }
 
 
@@ -37,7 +37,12 @@
 #warning Delete
     _managerParse = [ManagerParseXML new];
     [_managerParse parseMoviesXML:^(id data) {
-        ;
+        [IMMovie createFromArray:data
+                    successBlock:^{
+
+                    } failureBlock:^(NSError *error) {
+                        ;
+                    }];
     } failureBlock:^(NSError *error) {
         ;
     } completionBlock:^{

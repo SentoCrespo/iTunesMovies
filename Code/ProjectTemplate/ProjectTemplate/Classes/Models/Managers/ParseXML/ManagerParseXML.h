@@ -19,13 +19,15 @@
 
 #define elementNameTag @"entry"
 
+    #define identifierTag    @"id"
+        #define identifierAttr    @"im:id"
     #define titleTag         @"im:name"
     #define summaryTag       @"summary"
     #define imageTag         @"im:image"
     #define artistTag        @"im:artist"
     #define releaseDateTag   @"im:releaseDate"
     #define categoryTag      @"category"
-    #define categoryTermAttr @"label"
+        #define categoryTermAttr @"label"
 
 
 

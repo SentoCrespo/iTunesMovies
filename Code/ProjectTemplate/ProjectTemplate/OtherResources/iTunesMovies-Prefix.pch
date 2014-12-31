@@ -12,6 +12,12 @@
     #import <UIKit/UIKit.h>
     #import <Foundation/Foundation.h>
 
+    #import "CoreData+MagicalRecord.h"
+
+    #import "IMMovie+DBOperations.h"
+    #import "IMMovie+Favorites.h"
+
+
     // Utility classes
     #import "HelperShowAlert.h"
     #import "NSString+NSStringExtensions.h"
