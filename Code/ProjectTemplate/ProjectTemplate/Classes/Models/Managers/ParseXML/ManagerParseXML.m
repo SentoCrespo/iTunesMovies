@@ -29,15 +29,7 @@
 @end
 
 
-#define elementNameTag @"entry"
 
-    #define titleTag        @"title"
-    #define summaryTag      @"summary"
-    #define imageTag        @"im:image"
-    #define artistTag       @"im:artist"
-    #define releaseDateTag  @"im:releaseDate"
-    #define categoryTag     @"category"
-    #define categoryTermAttr @"label"
 
 
 #pragma mark - Init
@@ -52,17 +44,13 @@
         completionBlock: (void (^)(void)) completionBlock
 {
     
-    _successBlock = successBlock;
-    _failureBlock = failureBlock;
-    _completionBlock = completionBlock;
-    
-    
     WEAKSELF(wS);
     [ManagerAPI getMoviesXML:^(id data) {
 
-        wS.xmlParser = (NSXMLParser *) data;
-        wS.xmlParser.delegate = self;
-        [wS.xmlParser parse];
+        [wS parseMoviesXMLParser:data
+                    successBlock:successBlock
+                    failureBlock:failureBlock
+                 completionBlock:completionBlock];
         
     } failureBlock:^(NSError *error) {
         failureBlock? failureBlock(error) : nil;
@@ -71,6 +59,48 @@
     } completionBlock:nil];
     
 
+}
+
+
+- (void) parseMoviesXMLData: (NSData *) data
+               successBlock: (void (^)(id data)) successBlock
+               failureBlock: (void (^)(NSError *error)) failureBlock
+            completionBlock: (void (^)(void)) completionBlock
+{
+    if (!data || !data.length) {
+        failureBlock? failureBlock([NSError errorWithDomain:@"No data" code:404 userInfo:nil]) : nil;
+        completionBlock? completionBlock() : nil;
+        return;
+    }
+    
+    NSXMLParser *parser = [[NSXMLParser alloc] initWithData:data];
+    
+    [self parseMoviesXMLParser:parser
+                  successBlock:successBlock
+                  failureBlock:failureBlock
+               completionBlock:completionBlock];
+}
+
+
+- (void) parseMoviesXMLParser: (NSXMLParser *) parser
+                 successBlock: (void (^)(id data)) successBlock
+                 failureBlock: (void (^)(NSError *error)) failureBlock
+              completionBlock: (void (^)(void)) completionBlock
+{
+    
+    if (!parser) {
+        failureBlock? failureBlock([NSError errorWithDomain:@"No parser" code:404 userInfo:nil]) : nil;
+        completionBlock? completionBlock() : nil;
+        return;
+    }
+    
+    _successBlock = successBlock;
+    _failureBlock = failureBlock;
+    _completionBlock = completionBlock;
+    
+    _xmlParser = parser;
+    _xmlParser.delegate = self;
+    [_xmlParser parse];
 }
 
 
@@ -111,7 +141,7 @@
     // Capture the category label attribute
     else if ([elementName isEqualToString:categoryTag]) {
         [_dictElement setObject:[self stringByUnescapingAndCollapsingSpaces:attributeDict[categoryTermAttr]]
-                         forKey:categoryTag];
+                         forKey:categoryTermAttr];
     }
     
     _currentElement = elementName;
