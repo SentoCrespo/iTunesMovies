@@ -9,13 +9,11 @@
 
 #import <Foundation/Foundation.h>
 
-#import "MWFeedParser.h"
-
-@interface HelperRSSParser : NSObject <MWFeedParserDelegate>
+@interface HelperRSSParser : NSObject
 
 // Wrapper for MWFeedParser with blocks
 
-typedef void(^SuccessBlockRSS)(MWFeedInfo *info, NSArray *data);
+typedef void(^SuccessBlockRSS)(NSDictionary *info, NSArray *data);
 
 - (void) readAndParseRSSWithURL: (NSString*) url
                    successBlock: (SuccessBlockRSS) successBlock

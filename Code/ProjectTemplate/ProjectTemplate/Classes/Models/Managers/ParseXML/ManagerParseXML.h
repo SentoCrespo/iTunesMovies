@@ -15,7 +15,12 @@
 @interface ManagerParseXML : NSObject
 
 
-#pragma mark - Properties
+
+#pragma mark - Parse Movies
+
+- (void) parseMoviesXML: (void (^)(id data)) successBlock
+           failureBlock: (void (^)(NSError *error)) failureBlock
+        completionBlock: (void (^)(void)) completionBlock;
 
 
 

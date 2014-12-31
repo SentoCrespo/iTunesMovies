@@ -12,6 +12,7 @@
 
 #import "UIKit+AFNetworking.h"
 
+
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
@@ -22,6 +23,7 @@
     
     // Version tracking
     [GBVersionTracking track];
+    
     
     
     return YES;

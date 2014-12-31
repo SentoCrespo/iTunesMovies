@@ -8,11 +8,14 @@
  ******************************************************************************/
 
 
-
 #import "ViewController.h"
+
+#import "ManagerParseXML.h"
 
 
 @interface ViewController ()
+
+    @property (nonatomic, strong) ManagerParseXML *managerParse;
 
 @end
 
@@ -25,6 +28,21 @@
 {
     [super viewDidLoad];
     
+    [self testRss];
+}
+
+
+- (void) testRss
+{
+#warning Delete
+    _managerParse = [ManagerParseXML new];
+    [_managerParse parseMoviesXML:^(id data) {
+        ;
+    } failureBlock:^(NSError *error) {
+        ;
+    } completionBlock:^{
+        ;
+    }];
 }
 
 
