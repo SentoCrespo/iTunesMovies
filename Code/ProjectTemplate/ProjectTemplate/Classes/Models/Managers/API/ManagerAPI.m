@@ -81,27 +81,79 @@
 #pragma mark - API Methods -
 
 
-+ (void) getMovies: (void(^)(NSInteger numberItems)) successBlock
-      failureBlock: (void(^)(NSError *error)) failureBlock
-   completionBlock: (void(^)(void)) completionBlock
++ (void) getMoviesXML: (void(^)(id data)) successBlock
+         failureBlock: (void(^)(NSError *error)) failureBlock
+      completionBlock: (void(^)(void)) completionBlock
 {
     [self getWithRestMethod:@"/es/rss/topmovies/limit=50/genre=4401/xml"
              WithParameters:nil
         withCompletionBlock:^(NSInteger statusCode, id data, NSError *error) {
-           
-
-#warning TODO-Parse
-//            NSXMLParser *XMLParser = (NSXMLParser *)data;
-//            [XMLParser setShouldProcessNamespaces:YES];
             
-// XMLParser.delegate = self;
-// [XMLParser parse];
+            if (error || statusCode!=200 || !data) {
+                failureBlock? failureBlock(error) : nil;
+                completionBlock? completionBlock() : nil;
+                return;
+            }
+            
+            successBlock? successBlock(data) : nil;
+            completionBlock? completionBlock() : nil;
+            return;
         }];
     
 }
 
 
 
+#pragma mark - RAW Data Download
+    
++ (void) downloadDataFromURL: (NSString *) urlString
+                successBlock: (void (^)(id data)) successBlock
+                failureBlock: (void (^)(NSError *error)) failureBlock
+             completionBlock: (void (^)(void)) completionBlock
+{
+    NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
+    
+    NSURLSession *session = [NSURLSession sessionWithConfiguration:configuration];
+    
+    NSURL *url = [NSURL URLWithString:urlString];
+    if (!url) {
+        failureBlock? failureBlock([NSError errorWithDomain:@"Invalid url"
+                                                       code:404
+                                                   userInfo:nil]) : nil;
+        completionBlock? completionBlock() : nil;
+        return;
+    }
+    
+    NSURLSessionDataTask *task = [session dataTaskWithURL:url completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+        
+        // Check for error
+        if (error != nil) {
+            failureBlock? failureBlock(error) : nil;
+            completionBlock? completionBlock() : nil;
+            return;
+        }
+        
+        // Check for status different than 200
+        
+        NSInteger statusCode = [(NSHTTPURLResponse *)response statusCode];
+        if (statusCode != 200) {
+            failureBlock? failureBlock([NSError errorWithDomain:@"Not 200 OK"
+                                                           code:statusCode
+                                                       userInfo:nil]) : nil;
+            completionBlock? completionBlock() : nil;
+            return;
+        }
+        
+        [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+            successBlock? successBlock(data) : nil;
+            completionBlock? completionBlock() : nil;
+            return;
+        }];
+        
+        
+    }];
+    [task resume];
+}
 
 
 
@@ -147,45 +199,6 @@
 }
 
 
-
-+ (AFHTTPRequestOperation *) postWithRestMethod: (NSString *) restMethod
-                                 WithParameters: (NSDictionary *) parameters
-                            withCompletionBlock: (void(^)(NSInteger statusCode, id data, NSError *error)) completionBlock
-{
-  
-    ManagerAPI *apiManager = [self sharedInstance];
-    
-    AFHTTPRequestOperation *requestOperation =
-    [apiManager.manager POST: restMethod
-                  parameters: parameters
-                     success:^(AFHTTPRequestOperation *operation, id responseObject) {
-                         completionBlock(operation.response.statusCode, responseObject, nil);
-                     }
-                     failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-                         completionBlock(operation.response.statusCode, nil, error);
-                     }];
-    return requestOperation;
-}
-
-
-+ (AFHTTPRequestOperation *) putWithRestMethod: (NSString *) restMethod
-                                WithParameters: (NSDictionary *) parameters
-                           withCompletionBlock: (void(^)(NSInteger statusCode, id data, NSError *error)) completionBlock
-{
-   
-    ManagerAPI *apiManager = [self sharedInstance];
-    
-    AFHTTPRequestOperation *requestOperation =
-    [apiManager.manager PUT: restMethod
-                 parameters: parameters
-                    success:^(AFHTTPRequestOperation *operation, id responseObject) {
-                       completionBlock(operation.response.statusCode, responseObject, nil);
-                    }
-                    failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-                        completionBlock(operation.response.statusCode, nil, error);
-                    }];
-    return requestOperation;
-}
 
 
 

@@ -1,11 +1,4 @@
-/******************************************************************************
- *
- * Pets APP
- *
- * Created by Vicente Crespo Penadés - vicente.crespo.penades@gmail.com
- * Copyright (c) 2014 Vicente Crespo Penadés. All rights reserved.
- *
- ******************************************************************************/
+
 
 #if (TARGET_IPHONE_SIMULATOR || TARGET_OS_IPHONE)
     #import <UIKit/UIKit.h>

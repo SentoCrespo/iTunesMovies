@@ -26,7 +26,7 @@
         <!--Movies-->
         <scene sceneID="2ft-02-iFf">
             <objects>
-                <viewController title="Movies" id="BBo-VA-0aW" sceneMemberID="viewController">
+                <viewController title="Movies" id="BBo-VA-0aW" customClass="ViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="eVb-zu-3Gc"/>
                         <viewControllerLayoutGuide type="bottom" id="ACH-bz-tsS"/>
