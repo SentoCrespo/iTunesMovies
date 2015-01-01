@@ -96,6 +96,7 @@
 		AF19190B1A544A5100DEE40A /* MagicalRecord.m in Sources */ = {isa = PBXBuildFile; fileRef = AF1918ED1A544A5100DEE40A /* MagicalRecord.m */; };
 		AF1919101A544AD700DEE40A /* IMMovie+DBOperations.m in Sources */ = {isa = PBXBuildFile; fileRef = AF19190D1A544AD700DEE40A /* IMMovie+DBOperations.m */; };
 		AF1919111A544AD700DEE40A /* IMMovie+Favorites.m in Sources */ = {isa = PBXBuildFile; fileRef = AF19190F1A544AD700DEE40A /* IMMovie+Favorites.m */; };
+		AF1A08381A557FE200B57676 /* ManagerMovies.m in Sources */ = {isa = PBXBuildFile; fileRef = AF1A08371A557FE200B57676 /* ManagerMovies.m */; };
 		AF1B66F81A537C5900F781D7 /* ManagerParseXML.m in Sources */ = {isa = PBXBuildFile; fileRef = AF1B66F71A537C5900F781D7 /* ManagerParseXML.m */; };
 		AF27218E1A52E90D001D8E4F /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AF27218D1A52E90D001D8E4F /* Images.xcassets */; };
 		AF2721911A52EAA1001D8E4F /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AF27218F1A52EA93001D8E4F /* MobileCoreServices.framework */; };
@@ -289,6 +290,8 @@
 		AF19190D1A544AD700DEE40A /* IMMovie+DBOperations.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "IMMovie+DBOperations.m"; sourceTree = "<group>"; };
 		AF19190E1A544AD700DEE40A /* IMMovie+Favorites.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "IMMovie+Favorites.h"; sourceTree = "<group>"; };
 		AF19190F1A544AD700DEE40A /* IMMovie+Favorites.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "IMMovie+Favorites.m"; sourceTree = "<group>"; };
+		AF1A08361A557FE200B57676 /* ManagerMovies.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ManagerMovies.h; sourceTree = "<group>"; };
+		AF1A08371A557FE200B57676 /* ManagerMovies.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ManagerMovies.m; sourceTree = "<group>"; };
 		AF1B66F61A537C5900F781D7 /* ManagerParseXML.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ManagerParseXML.h; sourceTree = "<group>"; };
 		AF1B66F71A537C5900F781D7 /* ManagerParseXML.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ManagerParseXML.m; sourceTree = "<group>"; };
 		AF27218D1A52E90D001D8E4F /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = iTunesMovies/Images.xcassets; sourceTree = "<group>"; };
@@ -376,6 +379,7 @@
 			children = (
 				9A3586C819E3F0E100F79EB3 /* API */,
 				AF1B66F51A537C5900F781D7 /* ParseXML */,
+				AF1A08351A557FE200B57676 /* Movies */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -771,6 +775,15 @@
 			path = Core;
 			sourceTree = "<group>";
 		};
+		AF1A08351A557FE200B57676 /* Movies */ = {
+			isa = PBXGroup;
+			children = (
+				AF1A08361A557FE200B57676 /* ManagerMovies.h */,
+				AF1A08371A557FE200B57676 /* ManagerMovies.m */,
+			);
+			path = Movies;
+			sourceTree = "<group>";
+		};
 		AF1B66F51A537C5900F781D7 /* ParseXML */ = {
 			isa = PBXGroup;
 			children = (
@@ -1144,6 +1157,7 @@
 				AF1919081A544A5100DEE40A /* MagicalRecord+Options.m in Sources */,
 				AF1919071A544A5100DEE40A /* MagicalRecord+iCloud.m in Sources */,
 				9A35885D19E3F60400F79EB3 /* AFNetworkReachabilityManager.m in Sources */,
+				AF1A08381A557FE200B57676 /* ManagerMovies.m in Sources */,
 				9A35873519E3F12A00F79EB3 /* UIView+ViewExtras.m in Sources */,
 				9A35885719E3F60400F79EB3 /* UIProgressView+AFNetworking.m in Sources */,
 				AF1918FA1A544A5100DEE40A /* NSManagedObject+MagicalDataImport.m in Sources */,

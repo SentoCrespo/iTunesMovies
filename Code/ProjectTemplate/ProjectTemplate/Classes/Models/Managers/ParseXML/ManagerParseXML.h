@@ -35,18 +35,7 @@
 #pragma mark - Parse Movies
 
 /**
- *  Downloads and parses the movies URL from iTunes
- *
- *  @param successBlock    Returns the data parsed
- *  @param failureBlock    Contains the error
- *  @param completionBlock Called when the method has ended
- */
-- (void) parseMoviesXML: (void (^)(id data)) successBlock
-           failureBlock: (void (^)(NSError *error)) failureBlock
-        completionBlock: (void (^)(void)) completionBlock;
-
-/**
- *  Same as before but it parses the NSData given
+ *  Parses movies' XML in the given NSData
  *
  *  @param data            XML in NSData format
  *  @param successBlock    Returns the data parsed
@@ -60,7 +49,7 @@
 
 
 /**
- *  Same as before but it parses the NSXMLParser given
+ *  Same as before but it parses the given NSXMLParser
  *
  *  @param data            XML in NSXMLParser format
  *  @param successBlock    Returns the data parsed

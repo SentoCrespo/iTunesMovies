@@ -53,8 +53,10 @@
            failureBlock: (void(^)(NSError *error)) failureBlock
 {
     [MagicalRecord saveWithBlock:^(NSManagedObjectContext *localContext) {
+
         IMMovie *localItem = [self MR_inContext:localContext];
         localItem.isFavorite = @(isFavorite);
+        
     } completion:^(BOOL contextDidSave, NSError *error) {
         if (error) {
             failureBlock? failureBlock(error) : nil;

@@ -39,27 +39,7 @@
 
 #pragma mark - Parse
 
-- (void) parseMoviesXML: (void (^)(id data)) successBlock
-           failureBlock: (void (^)(NSError *error)) failureBlock
-        completionBlock: (void (^)(void)) completionBlock
-{
-    
-    WEAKSELF(wS);
-    [ManagerAPI getMoviesXML:^(id data) {
 
-        [wS parseMoviesXMLParser:data
-                    successBlock:successBlock
-                    failureBlock:failureBlock
-                 completionBlock:completionBlock];
-        
-    } failureBlock:^(NSError *error) {
-        failureBlock? failureBlock(error) : nil;
-        completionBlock? completionBlock() : nil;
-        
-    } completionBlock:nil];
-    
-
-}
 
 
 - (void) parseMoviesXMLData: (NSData *) data
