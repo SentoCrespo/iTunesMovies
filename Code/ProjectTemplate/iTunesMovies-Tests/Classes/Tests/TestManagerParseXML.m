@@ -188,7 +188,6 @@
 #pragma mark - Utils -
 
 
-
 - (NSData *) loadTestXMLFile
 {
     NSString *filePath = [[NSBundle bundleForClass:self.class]

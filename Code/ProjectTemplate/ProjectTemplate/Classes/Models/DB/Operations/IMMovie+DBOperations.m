@@ -22,6 +22,7 @@
 {
 
     [MagicalRecord saveWithBlock:^(NSManagedObjectContext *localContext) {
+        
         [IMMovie MR_importFromArray:items
                           inContext:localContext];
         
@@ -32,9 +33,7 @@
             return;
         }
         successBlock? successBlock() : nil;
-        
     }];
-    
     
     
 }
@@ -50,6 +49,24 @@
     
 }
 
++ (void) readItemWithIdentifier: (NSInteger) identifier
+                completionBlock: (void(^)(IMMovie *item)) completionBlock
+{
+    
+    
+    [self backgroundFetchWithBlock:^NSArray *(NSManagedObjectContext *context) {
+        
+        return @[[IMMovie MR_findFirstByAttribute:@"identifier"
+                                        withValue:@(identifier)
+                                        inContext:context]];
+        
+    } successBlock:^(NSArray *items) {
+        completionBlock? completionBlock(items.firstObject) : nil;
+    }];
+    
+}
+
+
 
 + (NSArray *) readAllItemsSortedByDate
 {
@@ -59,6 +76,22 @@
     return items;
     
 }
+
++ (void) readAllItemsSortedByDate: (void(^)(NSArray *items)) completionBlock
+{
+    [self backgroundFetchWithBlock:^NSArray *(NSManagedObjectContext *context) {
+        
+        return @[[IMMovie MR_findAllSortedBy:@"releaseDate"
+                                   ascending:NO
+                                   inContext:context]];
+        
+    } successBlock:^(NSArray *items) {
+        completionBlock? completionBlock(items.firstObject) : nil;
+    }];
+}
+
+
+
 
 
 + (NSInteger) readAllCount
@@ -77,15 +110,49 @@
     [item deleteItem];
 }
 
++ (void) deleteItemWithIdentifier: (NSInteger) identifier
+                     successBlock: (void(^)(void)) successBlock
+                     failureBlock: (void(^)(NSError *error)) failureBlock
+{
+    [IMMovie readItemWithIdentifier:identifier
+                    completionBlock:^(IMMovie *item) {
+                        
+                        [item deleteItem:successBlock
+                            failureBlock:failureBlock];
+                        
+                    }];
+}
+
+
+
+
 - (void) deleteItem
+{
+    [MagicalRecord saveWithBlockAndWait:^(NSManagedObjectContext *localContext) {
+        IMMovie *localItem = [self MR_inContext:localContext];
+        [localItem MR_deleteEntity];
+    }];
+}
+
+
+- (void) deleteItem: (void(^)(void)) successBlock
+       failureBlock: (void(^)(NSError *error)) failureBlock
 {
     [MagicalRecord saveWithBlock:^(NSManagedObjectContext *localContext) {
         IMMovie *localItem = [self MR_inContext:localContext];
         [localItem MR_deleteEntity];
+        
     } completion:^(BOOL contextDidSave, NSError *error) {
-        nil;
+        if (error) {
+            failureBlock? failureBlock(error) : nil;
+            return;
+        }
+        successBlock? successBlock() : nil;
     }];
 }
+
+
+
 
 + (void) deleteAllItems
 {
@@ -96,9 +163,23 @@
 
 #pragma mark - Utils -
 
-
-
-
++ (void) backgroundFetchWithBlock: (NSArray *(^)(NSManagedObjectContext *context)) fetchItemsBlock
+                     successBlock: (void(^)(NSArray *items)) successBlock {
+    
+    NSManagedObjectContext *privateContext = [NSManagedObjectContext MR_context];
+    [privateContext performBlock:^{
+        
+        NSArray *privateObjects = fetchItemsBlock(privateContext);
+        
+        NSArray *privateObjectIDs = [privateObjects valueForKey:@"objectID"];
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            NSPredicate *mainPredicate = [NSPredicate predicateWithFormat:@"self IN %@", privateObjectIDs];
+            NSArray *finalResults = [IMMovie MR_findAllWithPredicate:mainPredicate];
+            successBlock? successBlock(finalResults) : nil;
+        });
+    }];
+}
 
 
 @end

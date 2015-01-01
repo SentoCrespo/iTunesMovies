@@ -25,6 +25,11 @@
 
 - (void) updateFavorite: (BOOL) isFavorite;
 
+- (void) updateFavorite: (BOOL) isFavorite
+           successBlock: (void(^)(void)) successBlock
+           failureBlock: (void(^)(NSError *error)) failureBlock;
+
+
 #pragma mark Delete
 
 #pragma mark - Testing

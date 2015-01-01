@@ -41,15 +41,29 @@
 
 - (void) updateFavorite: (BOOL) isFavorite
 {
+    [MagicalRecord saveWithBlockAndWait:^(NSManagedObjectContext *localContext) {
+        IMMovie *localItem = [self MR_inContext:localContext];
+        localItem.isFavorite = @(isFavorite);
+    }];
+    
+}
+
+- (void) updateFavorite: (BOOL) isFavorite
+           successBlock: (void(^)(void)) successBlock
+           failureBlock: (void(^)(NSError *error)) failureBlock
+{
     [MagicalRecord saveWithBlock:^(NSManagedObjectContext *localContext) {
         IMMovie *localItem = [self MR_inContext:localContext];
         localItem.isFavorite = @(isFavorite);
     } completion:^(BOOL contextDidSave, NSError *error) {
-        nil;
+        if (error) {
+            failureBlock? failureBlock(error) : nil;
+            return;
+        }
+        successBlock? successBlock() : nil;
     }];
-    
-    
 }
+
 
 
 #pragma mark Delete

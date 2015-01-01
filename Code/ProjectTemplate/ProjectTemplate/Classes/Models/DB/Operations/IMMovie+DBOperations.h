@@ -24,9 +24,18 @@
 
 + (IMMovie *) readItemWithIdentifier: (NSInteger) identifier;
 
++ (void) readItemWithIdentifier: (NSInteger) identifier
+                completionBlock: (void(^)(IMMovie *item)) completionBlock;
+
+
 + (NSArray *) readAllItemsSortedByDate;
 
++ (void) readAllItemsSortedByDate: (void(^)(NSArray *items)) completionBlock;
+
+
 + (NSInteger) readAllCount;
+
+
 
 #pragma mark Update
 
@@ -34,9 +43,20 @@
 
 + (void) deleteItemWithIdentifier: (NSInteger) identifier;
 
++ (void) deleteItemWithIdentifier: (NSInteger) identifier
+                     successBlock: (void(^)(void)) successBlock
+                     failureBlock: (void(^)(NSError *error)) failureBlock;
+
+
 - (void) deleteItem;
 
+- (void) deleteItem: (void(^)(void)) successBlock
+       failureBlock: (void(^)(NSError *error)) failureBlock;
+
+
 + (void) deleteAllItems;
+
+
 
 #pragma mark - Utils -
 
