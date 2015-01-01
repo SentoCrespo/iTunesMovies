@@ -13,8 +13,6 @@
 @interface ViewController : UIViewController
 
 #pragma mark - Outlets
-@property (weak, nonatomic) IBOutlet UIView *viewTopBar;
-@property (weak, nonatomic) IBOutlet UITableView *tvTable;
 
 
 @end
