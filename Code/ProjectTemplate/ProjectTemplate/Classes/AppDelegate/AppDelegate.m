@@ -18,6 +18,11 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
  
+    // Core Data
+    [MagicalRecord setupAutoMigratingCoreDataStack];
+    [MagicalRecord setLoggingLevel:MagicalRecordLoggingLevelError];
+    
+    
     // Shows Internet Activity indicator when AFNetworking is doing tasks
     [[AFNetworkActivityIndicatorManager sharedManager] setEnabled:YES];
     
@@ -51,7 +56,7 @@
 
 - (void)applicationWillTerminate:(UIApplication *)application
 {
-
+    [MagicalRecord cleanUp];
 }
 
 @end

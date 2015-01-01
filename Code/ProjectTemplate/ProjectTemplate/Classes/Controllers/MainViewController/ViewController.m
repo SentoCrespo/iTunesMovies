@@ -35,14 +35,21 @@
 - (void) testRss
 {
 #warning Delete
-    _managerParse = [ManagerParseXML new];
-    [_managerParse parseMoviesXML:^(id data) {
-        ;
-    } failureBlock:^(NSError *error) {
-        ;
-    } completionBlock:^{
-        ;
-    }];
+    
+    
+//    _managerParse = [ManagerParseXML new];
+//    [_managerParse parseMoviesXML:^(id data) {
+//        [IMMovie createFromArray:data
+//                    successBlock:^{
+//                        IMMovie *test = [IMMovie readItemWithIdentifier:526323818];
+//                    } failureBlock:^(NSError *error) {
+//                        ;
+//                    }];
+//    } failureBlock:^(NSError *error) {
+//        ;
+//    } completionBlock:^{
+//        ;
+//    }];
 }
 
 
