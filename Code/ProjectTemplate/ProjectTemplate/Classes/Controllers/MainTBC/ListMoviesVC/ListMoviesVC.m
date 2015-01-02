@@ -13,6 +13,8 @@
 
 #import "ManagerMovies.h"
 
+#import "DetailsMovieVC.h"
+
 @interface ListMoviesVC () <NSFetchedResultsControllerDelegate>
 
     @property (strong, nonatomic) NSFetchedResultsController *fetchedResultsController;
@@ -160,13 +162,27 @@
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    IMMovie *item = [self.fetchedResultsController objectAtIndexPath:indexPath];
-#warning TODO: Complete action to show details
-    
+    [self performSegueWithIdentifier:@"fromListToDetails"
+                              sender:self];
+//    IMMovie *item = [self.fetchedResultsController objectAtIndexPath:indexPath];
 }
 
 
 
+#pragma mark - Segue -
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    
+    if ([[segue identifier] isEqualToString:@"fromListToDetails"]) {
+        
+        IMMovie *item = [self.fetchedResultsController objectAtIndexPath:self.collectionView.indexPathsForSelectedItems.firstObject];
+        DetailsMovieVC *detailsMovieVC = (DetailsMovieVC *) segue.destinationViewController;
+        detailsMovieVC.movie = item;
+        
+        return;
+    }
+    
+}
 
 
 

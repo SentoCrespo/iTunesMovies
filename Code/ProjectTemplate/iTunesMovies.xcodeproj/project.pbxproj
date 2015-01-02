@@ -103,6 +103,7 @@
 		AF27219B1A52EACC001D8E4F /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AF27219A1A52EACC001D8E4F /* Security.framework */; };
 		AF2721AE1A530302001D8E4F /* TestManagerParseXML.m in Sources */ = {isa = PBXBuildFile; fileRef = AF2721AD1A530302001D8E4F /* TestManagerParseXML.m */; };
 		AF2721D31A53096C001D8E4F /* movies.xml in Resources */ = {isa = PBXBuildFile; fileRef = AF2721D21A53096C001D8E4F /* movies.xml */; };
+		AF949C6F1A56CA7300650D8E /* IMMovie+Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = AF949C6E1A56CA7300650D8E /* IMMovie+Utils.m */; };
 		AFCC32131A56ACAA00C038CB /* CellMovie.m in Sources */ = {isa = PBXBuildFile; fileRef = AFCC32121A56ACAA00C038CB /* CellMovie.m */; };
 		AFCC32361A56ADE100C038CB /* MKAnnotationView+WebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = AFCC32161A56ADE100C038CB /* MKAnnotationView+WebCache.m */; };
 		AFCC32371A56ADE100C038CB /* NSData+ImageContentType.m in Sources */ = {isa = PBXBuildFile; fileRef = AFCC32181A56ADE100C038CB /* NSData+ImageContentType.m */; };
@@ -136,6 +137,7 @@
 		AFCC32851A56B85C00C038CB /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AF2721981A52EAC2001D8E4F /* ImageIO.framework */; };
 		AFCC32881A56B88000C038CB /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AFCC32871A56B88000C038CB /* MapKit.framework */; };
 		AFCC328A1A56B89F00C038CB /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AFCC32891A56B89F00C038CB /* Accelerate.framework */; };
+		AFCC32961A56C29D00C038CB /* DetailsMovieVC.m in Sources */ = {isa = PBXBuildFile; fileRef = AFCC32951A56C29D00C038CB /* DetailsMovieVC.m */; };
 		CF0B6672170ECE9900A83D5E /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF0B6671170ECE9900A83D5E /* UIKit.framework */; };
 		CF0B6674170ECE9900A83D5E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF0B6673170ECE9900A83D5E /* Foundation.framework */; };
 		CF0B6676170ECE9900A83D5E /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF0B6675170ECE9900A83D5E /* CoreGraphics.framework */; };
@@ -331,6 +333,8 @@
 		AF2721A31A5302BE001D8E4F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AF2721AD1A530302001D8E4F /* TestManagerParseXML.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestManagerParseXML.m; sourceTree = "<group>"; };
 		AF2721D21A53096C001D8E4F /* movies.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = movies.xml; sourceTree = "<group>"; };
+		AF949C6D1A56CA7300650D8E /* IMMovie+Utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "IMMovie+Utils.h"; sourceTree = "<group>"; };
+		AF949C6E1A56CA7300650D8E /* IMMovie+Utils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "IMMovie+Utils.m"; sourceTree = "<group>"; };
 		AFCC32111A56ACAA00C038CB /* CellMovie.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CellMovie.h; sourceTree = "<group>"; };
 		AFCC32121A56ACAA00C038CB /* CellMovie.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CellMovie.m; sourceTree = "<group>"; };
 		AFCC32151A56ADE100C038CB /* MKAnnotationView+WebCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MKAnnotationView+WebCache.h"; sourceTree = "<group>"; };
@@ -397,6 +401,8 @@
 		AFCC32841A56B78900C038CB /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
 		AFCC32871A56B88000C038CB /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		AFCC32891A56B89F00C038CB /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
+		AFCC32941A56C29D00C038CB /* DetailsMovieVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailsMovieVC.h; sourceTree = "<group>"; };
+		AFCC32951A56C29D00C038CB /* DetailsMovieVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailsMovieVC.m; sourceTree = "<group>"; };
 		CF0B666E170ECE9900A83D5E /* iTunesMovies.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iTunesMovies.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CF0B6671170ECE9900A83D5E /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		CF0B6673170ECE9900A83D5E /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -747,6 +753,8 @@
 				AF19190D1A544AD700DEE40A /* IMMovie+DBOperations.m */,
 				AF19190E1A544AD700DEE40A /* IMMovie+Favorites.h */,
 				AF19190F1A544AD700DEE40A /* IMMovie+Favorites.m */,
+				AF949C6D1A56CA7300650D8E /* IMMovie+Utils.h */,
+				AF949C6E1A56CA7300650D8E /* IMMovie+Utils.m */,
 			);
 			path = Operations;
 			sourceTree = "<group>";
@@ -987,6 +995,7 @@
 			children = (
 				AFCC324F1A56B35500C038CB /* MainTBC.h */,
 				AFCC32501A56B35500C038CB /* MainTBC.m */,
+				AFCC32931A56C29D00C038CB /* DetailsMovieVC */,
 				AFCC32571A56B44300C038CB /* ListMoviesVC */,
 			);
 			path = MainTBC;
@@ -1074,6 +1083,15 @@
 				AFCC32841A56B78900C038CB /* Constants.h */,
 			);
 			path = Constants;
+			sourceTree = "<group>";
+		};
+		AFCC32931A56C29D00C038CB /* DetailsMovieVC */ = {
+			isa = PBXGroup;
+			children = (
+				AFCC32941A56C29D00C038CB /* DetailsMovieVC.h */,
+				AFCC32951A56C29D00C038CB /* DetailsMovieVC.m */,
+			);
+			path = DetailsMovieVC;
 			sourceTree = "<group>";
 		};
 		CF0B6665170ECE9800A83D5E = {
@@ -1372,6 +1390,7 @@
 				AFCC32451A56ADE100C038CB /* UIView+WebCacheOperation.m in Sources */,
 				9A35885E19E3F60400F79EB3 /* AFSecurityPolicy.m in Sources */,
 				AF1918FD1A544A5100DEE40A /* NSManagedObject+MagicalRequests.m in Sources */,
+				AFCC32961A56C29D00C038CB /* DetailsMovieVC.m in Sources */,
 				9A35882819E3F1A700F79EB3 /* HelperProgressHud.m in Sources */,
 				9A35878919E3F15B00F79EB3 /* TSMessageView.m in Sources */,
 				9A35872819E3F12A00F79EB3 /* NSString+HTML.m in Sources */,
@@ -1420,6 +1439,7 @@
 				9A35885F19E3F60400F79EB3 /* AFURLConnectionOperation.m in Sources */,
 				AFCC32441A56ADE100C038CB /* UIImageView+WebCache.m in Sources */,
 				AF1919031A544A5100DEE40A /* NSPersistentStore+MagicalRecord.m in Sources */,
+				AF949C6F1A56CA7300650D8E /* IMMovie+Utils.m in Sources */,
 				AF19190A1A544A5100DEE40A /* MagicalRecord+ShorthandSupport.m in Sources */,
 				9A35881619E3F1A700F79EB3 /* GBVersionTracking.m in Sources */,
 				9A35872719E3F12A00F79EB3 /* GTMNSString+HTML.m in Sources */,

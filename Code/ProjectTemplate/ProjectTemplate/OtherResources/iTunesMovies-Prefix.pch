@@ -20,6 +20,7 @@
     // Structure
     #import "IMMovie+DBOperations.h"
     #import "IMMovie+Favorites.h"
+    #import "IMMovie+Utils.h"
 
     // Categories
     #import "NSObject+WeakSelf.h"
