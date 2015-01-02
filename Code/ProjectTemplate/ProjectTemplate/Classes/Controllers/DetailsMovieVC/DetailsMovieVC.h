@@ -19,6 +19,8 @@
 
 #pragma mark - IBOutlets
 
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *btFavorite;
+
 @property (weak, nonatomic) IBOutlet UIScrollView *svContent;
 @property (weak, nonatomic) IBOutlet UIView *viewContent;
 
@@ -33,5 +35,6 @@
 
 #pragma mark - IBActions
 
+- (IBAction)btFavoriteTap:(UIBarButtonItem *)sender;
 
 @end

@@ -35,11 +35,9 @@
  *
  *  @param successBlock Contains the NXSMLParser
  *  @param failureBlock
- *  @param completionBlock
  */
 + (void) getMoviesXML: (void(^)(id data)) successBlock
-         failureBlock: (void(^)(NSError *error)) failureBlock
-      completionBlock: (void(^)(void)) completionBlock;
+         failureBlock: (void(^)(NSError *error)) failureBlock;
 
 
 #pragma mark - RAW Data Download
@@ -52,12 +50,10 @@
  *  @param urlString       Url String
  *  @param successBlock
  *  @param failureBlock
- *  @param completionBlock 
  */
 + (void) downloadDataFromURL: (NSString *) urlString
                 successBlock: (void (^)(id data)) successBlock
-                failureBlock: (void (^)(NSError *error)) failureBlock
-             completionBlock: (void (^)(void)) completionBlock;
+                failureBlock: (void (^)(NSError *error)) failureBlock;
 
 
 #pragma mark - General operations

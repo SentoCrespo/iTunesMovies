@@ -29,12 +29,6 @@
     
 }
 
-//-(void)viewDidLayoutSubviews
-//{
-//    [super viewDidLayoutSubviews];
-//    _svContent.contentSize = _viewContent.frame.size;
-//}
-
 
 #pragma mark - Init
 
@@ -73,6 +67,9 @@
     _lbSummary.text = _movie.summary;
     
     [_imgMovie sd_setImageWithURL:[NSURL URLWithString:_movie.image]];
+    
+    UIImage *btImage = [_movie imageFavorite];
+    [_btFavorite setImage:btImage];
 
 }
 
@@ -81,5 +78,10 @@
 
 
 
+- (IBAction)btFavoriteTap:(UIBarButtonItem *)sender
+{
+    [_movie updateFavorite:![_movie isFavoriteBool]];
+    [_btFavorite setImage:[_movie imageFavorite]];
+}
 @end
 

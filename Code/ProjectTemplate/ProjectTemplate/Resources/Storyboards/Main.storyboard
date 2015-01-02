@@ -1,29 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="LUq-hL-Vhc">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="XkL-1X-Y4N">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
     </dependencies>
     <scenes>
-        <!--Favorites-->
-        <scene sceneID="OTO-X1-z4J">
-            <objects>
-                <viewController title="Favorites" id="wAQ-aY-xl4" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="bWL-b3-Aak"/>
-                        <viewControllerLayoutGuide type="bottom" id="H3e-Rj-Vh4"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="9J8-ch-3lI">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                    <tabBarItem key="tabBarItem" title="Favorites" id="dWe-27-Zf7"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="UoY-Eq-oCE" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="879" y="593"/>
-        </scene>
         <!--List MoviesVC-->
         <scene sceneID="LYX-Iz-byg">
             <objects>
@@ -119,8 +100,27 @@
                             <outlet property="delegate" destination="chj-7r-xsB" id="cSt-wT-u2Z"/>
                         </connections>
                     </collectionView>
-                    <navigationItem key="navigationItem" id="WvJ-eA-z7T"/>
+                    <navigationItem key="navigationItem" id="WvJ-eA-z7T">
+                        <nil key="title"/>
+                        <segmentedControl key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="2cc-Xc-lx2">
+                            <rect key="frame" x="180" y="7" width="240" height="30"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <segments>
+                                <segment title="All"/>
+                                <segment title="Favorites"/>
+                            </segments>
+                            <connections>
+                                <action selector="scSelectorChanged:" destination="chj-7r-xsB" eventType="valueChanged" id="Iwr-y3-JvA"/>
+                            </connections>
+                        </segmentedControl>
+                        <barButtonItem key="rightBarButtonItem" systemItem="refresh" id="EY5-xe-WNj">
+                            <connections>
+                                <action selector="btRefreshTap:" destination="chj-7r-xsB" id="siJ-4n-VfY"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
+                        <outlet property="scSelector" destination="2cc-Xc-lx2" id="4Ib-HI-oD6"/>
                         <segue destination="mDE-F0-cEB" kind="show" identifier="fromListToDetails" id="bS4-ll-1rZ"/>
                     </connections>
                 </collectionViewController>
@@ -252,7 +252,15 @@
                             </mask>
                         </variation>
                     </view>
+                    <navigationItem key="navigationItem" id="VIU-dX-8Im">
+                        <barButtonItem key="rightBarButtonItem" image="starChecked" id="O0l-oo-kdZ">
+                            <connections>
+                                <action selector="btFavoriteTap:" destination="mDE-F0-cEB" id="73C-TL-4SQ"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
+                        <outlet property="btFavorite" destination="O0l-oo-kdZ" id="v6R-FE-ePn"/>
                         <outlet property="imgMovie" destination="EuV-Jg-UmV" id="kfw-qP-9qd"/>
                         <outlet property="lbArtist" destination="Rwy-3d-CVi" id="nu9-5Q-Dqo"/>
                         <outlet property="lbCategory" destination="oV8-2p-AHH" id="zve-5Q-fqH"/>
@@ -265,26 +273,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ieg-ig-lIG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2495" y="241"/>
-        </scene>
-        <!--Tab Bar Controller-->
-        <scene sceneID="cMN-6V-WO6">
-            <objects>
-                <tabBarController id="LUq-hL-Vhc" sceneMemberID="viewController">
-                    <nil key="simulatedBottomBarMetrics"/>
-                    <tabBar key="tabBar" contentMode="scaleToFill" id="PKF-Nh-KgU">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                    </tabBar>
-                    <connections>
-                        <segue destination="XkL-1X-Y4N" kind="relationship" relationship="viewControllers" id="seM-BZ-E8M"/>
-                        <segue destination="wAQ-aY-xl4" kind="relationship" relationship="viewControllers" id="Uzh-VD-Yjl"/>
-                    </connections>
-                </tabBarController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Aqo-21-gHR" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-153" y="278"/>
+            <point key="canvasLocation" x="2413" y="-145"/>
         </scene>
         <!--Movies-->
         <scene sceneID="8hC-EH-8zq">
@@ -305,24 +294,8 @@
             </objects>
             <point key="canvasLocation" x="879" y="-145"/>
         </scene>
-        <!--View Controller-->
-        <scene sceneID="tVY-Kt-ZN5">
-            <objects>
-                <viewController automaticallyAdjustsScrollViewInsets="NO" id="drp-nS-QPQ" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="wHa-Pp-7PC"/>
-                        <viewControllerLayoutGuide type="bottom" id="M3T-o8-aSr"/>
-                    </layoutGuides>
-                    <view key="view" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="pf8-zR-JyI">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                    <toolbarItems/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="gMJ-WY-ULO" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1627" y="593"/>
-        </scene>
     </scenes>
+    <resources>
+        <image name="starChecked" width="20" height="20"/>
+    </resources>
 </document>

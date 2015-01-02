@@ -40,12 +40,10 @@
  *  @param data            XML in NSData format
  *  @param successBlock    Returns the data parsed
  *  @param failureBlock    Contains the error
- *  @param completionBlock Called when the method has ended
  */
 - (void) parseMoviesXMLData: (NSData *) data
                successBlock: (void (^)(id data)) successBlock
-               failureBlock: (void (^)(NSError *error)) failureBlock
-            completionBlock: (void (^)(void)) completionBlock;
+               failureBlock: (void (^)(NSError *error)) failureBlock;
 
 
 /**
@@ -54,12 +52,10 @@
  *  @param data            XML in NSXMLParser format
  *  @param successBlock    Returns the data parsed
  *  @param failureBlock    Contains the error
- *  @param completionBlock Called when the method has ended
  */
 - (void) parseMoviesXMLParser: (NSXMLParser *) parser
                  successBlock: (void (^)(id data)) successBlock
-                 failureBlock: (void (^)(NSError *error)) failureBlock
-              completionBlock: (void (^)(void)) completionBlock;
+                 failureBlock: (void (^)(NSError *error)) failureBlock;
 
 
 @end

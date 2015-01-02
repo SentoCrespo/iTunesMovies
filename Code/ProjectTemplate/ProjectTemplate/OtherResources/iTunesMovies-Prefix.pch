@@ -16,6 +16,7 @@
     #import "CoreData+MagicalRecord.h"
     #import "PureLayout.h"
     #import "GBVersionTracking.h"
+    #import "HelperShowAlert.h"
 
     // Structure
     #import "IMMovie+DBOperations.h"

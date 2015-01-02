@@ -15,5 +15,6 @@
 
 - (NSString *) dateFormatted;
 
+- (UIImage *) imageFavorite;
 
 @end

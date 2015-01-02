@@ -21,4 +21,13 @@
 }
 
 
+- (UIImage *) imageFavorite
+{
+    if ([self isFavoriteBool]) {
+        return [UIImage imageNamed:@"starChecked"];
+    }
+    
+    return [UIImage imageNamed:@"starUnchecked"];
+}
+
 @end

@@ -15,13 +15,25 @@
 
 #import "DetailsMovieVC.h"
 
+#import "HelperProgressHud.h"
+
+
+#define indexAll        0
+#define indexFavorites  1
+
+
+
 @interface ListMoviesVC () <NSFetchedResultsControllerDelegate>
 
     @property (strong, nonatomic) NSFetchedResultsController *fetchedResultsController;
     @property (strong, nonatomic) NSMutableArray *objectChanges;
     @property (strong, nonatomic) NSMutableArray *sectionChanges;
 
+
     @property (strong, nonatomic) UILabel *lbEmpty;
+
+
+    @property (assign, nonatomic) BOOL isShowingFavorites;
 
 @end
 
@@ -35,25 +47,11 @@
 {
     [super viewDidLoad];
     [self initViewController];
-    
-    ManagerMovies *managerMovies = [ManagerMovies new];
-    [managerMovies storeMovies:^{
-
-    } failureBlock:^(NSError *error) {
-        ;
-    } completionBlock:^{
-        [_cvContent reloadData];
-    }];
-    
-    
 }
 
 - (void) viewWillAppear:(BOOL)animated
 {
     [self fetchedResultsController];
-    [_cvContent reloadData];
-    [_parentController.navigationController setNavigationBarHidden:NO
-                                                          animated:NO];
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -87,26 +85,21 @@
     
 }
 
-#pragma mark Variable init
 
 - (void) initVariables
 {
     _objectChanges  = [NSMutableArray array];
     _sectionChanges = [NSMutableArray array];
-}
-
-
-#pragma mark Translation
-
-- (void) translation
-{
-    self.title = STR(@"LATEST_MOVIES_TITLE_TAB");
-    self.navigationItem.title = STR(@"LATEST_MOVIES_TITLE");
+    
     
 }
 
-
-#pragma mark UI Initialization
+- (void) translation
+{
+    self.title = STR(@"TABBAR_LIST_MOVIES_TITLE");
+    self.navigationItem.title = STR(@"TABBAR_LIST_MOVIES_TITLE");
+    
+}
 
 - (void) initUI
 {
@@ -114,59 +107,44 @@
 }
 
 
+#pragma mark  Reload Data
 
-
-#pragma mark - UICollectionVIew
-
-- (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
+- (void) reloadData
 {
-    if (!self.fetchedResultsController){
-        return 1;
-    }
+    WEAKSELF(wS);
     
-    return self.fetchedResultsController.sections.count;
+    [HelperProgressHud show];
+    ManagerMovies *managerMovies = [ManagerMovies new];
+    [managerMovies storeMovies:^{
+    } failureBlock:^(NSError *error) {
+        
+        [HelperShowAlert ShowError:STR(@"LIST_DOWNLOAD_ERROR_TITLE")
+                              Text:STR(@"LIST_DOWNLOAD_ERROR_TITLE")];
+        
+    } completionBlock:^{
+        [wS refreshUI];
+        [HelperProgressHud dismiss];
+    }];
 }
 
-- (CGSize)collectionView:(UICollectionView *)collectionView
-                  layout:(UICollectionViewLayout*)collectionViewLayout
-  sizeForItemAtIndexPath:(NSIndexPath *)indexPath
+- (void) refreshUI
 {
-
-    return CGSizeMake(90,150);
-    
+    _fetchedResultsController = nil;
+    [self fetchedResultsController];
+    [self.collectionView reloadData];
 }
 
-- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
+#pragma mark - IBActions
+
+- (IBAction)scSelectorChanged:(UISegmentedControl *)sender
 {
-    if (!self.fetchedResultsController){
-        return 0;
-    }
-    
-    id <NSFetchedResultsSectionInfo> sectionInfo = self.fetchedResultsController.sections[section];
-    NSInteger numberOfObjects = [sectionInfo numberOfObjects];
-    return numberOfObjects;
+    [self refreshUI];
 }
 
-- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
+- (IBAction)btRefreshTap:(UIBarButtonItem *)sender
 {
-    CellMovie *cell = (CellMovie *)[collectionView dequeueReusableCellWithReuseIdentifier:CellMovieIdentifier
-                                                                         forIndexPath:indexPath];
-    
-    IMMovie *item = [self.fetchedResultsController objectAtIndexPath:indexPath];
-    
-    [cell configureCellWithItem:item
-                   forIndexPath:indexPath];
-    
-    return cell;
+    [self reloadData];
 }
-
-- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
-{
-    [self performSegueWithIdentifier:@"fromListToDetails"
-                              sender:self];
-//    IMMovie *item = [self.fetchedResultsController objectAtIndexPath:indexPath];
-}
-
 
 
 #pragma mark - Segue -
@@ -186,25 +164,121 @@
 
 
 
+
+#pragma mark - Fetched Request  -
+
+- (NSFetchRequest *) fetchForAllMovies
+{
+    return [IMMovie MR_requestAllSortedBy:@"name"
+                                ascending:YES];
+}
+
+
+- (NSFetchRequest *) fetchForFavoriteMovies
+{
+    return [IMMovie MR_requestAllSortedBy:@"name"
+                                ascending:YES
+                            withPredicate:[IMMovie predicateForFavorites]];
+}
+
+- (BOOL) isEmptyDatasource
+{
+    // All movies
+    if (_scSelector.selectedSegmentIndex == indexAll) {
+        return [IMMovie readAllCount];
+    }
+    
+    // Favorites
+    return [IMMovie readAllFavoritesCount];
+}
+
+
+
+
+
+
+
+#warning Improvement: All this could be refactored into a DS/Delegate so this class was about 150 lines, and the responsibility was reduced
+
+
+#pragma mark - UICollectionVIew
+
+- (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
+{
+    if (!self.fetchedResultsController){
+        return 1;
+    }
+    
+    return self.fetchedResultsController.sections.count;
+}
+
+- (CGSize)collectionView:(UICollectionView *)collectionView
+                  layout:(UICollectionViewLayout*)collectionViewLayout
+  sizeForItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    
+    return CGSizeMake(90,150);
+    
+}
+
+- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
+{
+    if (!self.fetchedResultsController){
+        return 0;
+    }
+    
+    id <NSFetchedResultsSectionInfo> sectionInfo = self.fetchedResultsController.sections[section];
+    NSInteger numberOfObjects = [sectionInfo numberOfObjects];
+    return numberOfObjects;
+}
+
+- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    CellMovie *cell = (CellMovie *)[collectionView dequeueReusableCellWithReuseIdentifier:CellMovieIdentifier
+                                                                             forIndexPath:indexPath];
+    
+    IMMovie *item = [self.fetchedResultsController objectAtIndexPath:indexPath];
+    
+    [cell configureCellWithItem:item
+                   forIndexPath:indexPath];
+    
+    return cell;
+}
+
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    [self performSegueWithIdentifier:@"fromListToDetails"
+                              sender:self];
+}
+
+
+
+
+
 #pragma mark - Fetched results controller
+
+- (void) createEmptyLabel
+{
+    if (!_lbEmpty) {
+        _lbEmpty = [[UILabel alloc] initForAutoLayout];
+        _lbEmpty.font = [UIFont fontWithName:@"HelveticaNeue-Thin" size:16.0f];
+        _lbEmpty.numberOfLines = 0;
+        _lbEmpty.text = STR(@"LIST_NO_DATA");
+        [self.view addSubview:_lbEmpty];
+        [_lbEmpty autoCenterInSuperview];
+        [_lbEmpty autoPinEdgeToSuperviewEdge:ALEdgeLeft withInset:20.0 relation:NSLayoutRelationGreaterThanOrEqual];
+        [_lbEmpty autoPinEdgeToSuperviewEdge:ALEdgeRight withInset:20.0 relation:NSLayoutRelationGreaterThanOrEqual];
+    }
+}
+
+
 
 - (NSFetchedResultsController *)fetchedResultsController
 {
     
     // Check for empty datasource
-    if (![IMMovie readAllCount]) {
-        
-        if (!_lbEmpty) {
-            _lbEmpty = [[UILabel alloc] initForAutoLayout];
-            _lbEmpty.font = [UIFont fontWithName:@"HelveticaNeue-Thin" size:16.0f];
-            _lbEmpty.numberOfLines = 0;
-            _lbEmpty.text = STR(@"NO_DATA");
-            [self.view addSubview:_lbEmpty];
-            [_lbEmpty autoCenterInSuperview];
-            [_lbEmpty autoPinEdgeToSuperviewEdge:ALEdgeLeft withInset:20.0 relation:NSLayoutRelationGreaterThanOrEqual];
-            [_lbEmpty autoPinEdgeToSuperviewEdge:ALEdgeRight withInset:20.0 relation:NSLayoutRelationGreaterThanOrEqual];
-        }
-        
+    if (![self isEmptyDatasource]) {
+        [self createEmptyLabel];
         [self.view bringSubviewToFront:_lbEmpty];
         return nil;
     }
@@ -217,8 +291,7 @@
         return _fetchedResultsController;
     }
     
-    NSFetchRequest *fetchRequest = [IMMovie MR_requestAllSortedBy:@"name"
-                                                        ascending:YES];
+    NSFetchRequest *fetchRequest = _scSelector.selectedSegmentIndex == indexAll ? [self fetchForAllMovies] : [self fetchForFavoriteMovies];
     
     // Set the batch size to a suitable number.
     [fetchRequest setFetchBatchSize:10];
@@ -232,6 +305,7 @@
     
     _fetchedResultsController = aFetchedResultsController;
     _fetchedResultsController.delegate = self;
+    
     
     NSError *error = nil;
     if (![self.fetchedResultsController performFetch:&error]) {

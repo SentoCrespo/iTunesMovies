@@ -104,6 +104,8 @@
 		AF2721AE1A530302001D8E4F /* TestManagerParseXML.m in Sources */ = {isa = PBXBuildFile; fileRef = AF2721AD1A530302001D8E4F /* TestManagerParseXML.m */; };
 		AF2721D31A53096C001D8E4F /* movies.xml in Resources */ = {isa = PBXBuildFile; fileRef = AF2721D21A53096C001D8E4F /* movies.xml */; };
 		AF949C6F1A56CA7300650D8E /* IMMovie+Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = AF949C6E1A56CA7300650D8E /* IMMovie+Utils.m */; };
+		AF949C761A56DD0400650D8E /* DetailsMovieVC.m in Sources */ = {isa = PBXBuildFile; fileRef = AF949C721A56DD0400650D8E /* DetailsMovieVC.m */; };
+		AF949C771A56DD0400650D8E /* ListMoviesVC.m in Sources */ = {isa = PBXBuildFile; fileRef = AF949C751A56DD0400650D8E /* ListMoviesVC.m */; };
 		AFCC32131A56ACAA00C038CB /* CellMovie.m in Sources */ = {isa = PBXBuildFile; fileRef = AFCC32121A56ACAA00C038CB /* CellMovie.m */; };
 		AFCC32361A56ADE100C038CB /* MKAnnotationView+WebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = AFCC32161A56ADE100C038CB /* MKAnnotationView+WebCache.m */; };
 		AFCC32371A56ADE100C038CB /* NSData+ImageContentType.m in Sources */ = {isa = PBXBuildFile; fileRef = AFCC32181A56ADE100C038CB /* NSData+ImageContentType.m */; };
@@ -122,9 +124,7 @@
 		AFCC32441A56ADE100C038CB /* UIImageView+WebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = AFCC32331A56ADE100C038CB /* UIImageView+WebCache.m */; };
 		AFCC32451A56ADE100C038CB /* UIView+WebCacheOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = AFCC32351A56ADE100C038CB /* UIView+WebCacheOperation.m */; };
 		AFCC32471A56B0FB00C038CB /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AFCC32461A56B0FB00C038CB /* Images.xcassets */; };
-		AFCC32551A56B35500C038CB /* MainTBC.m in Sources */ = {isa = PBXBuildFile; fileRef = AFCC32501A56B35500C038CB /* MainTBC.m */; };
 		AFCC32561A56B35500C038CB /* BlankVC.m in Sources */ = {isa = PBXBuildFile; fileRef = AFCC32521A56B35500C038CB /* BlankVC.m */; };
-		AFCC325A1A56B44300C038CB /* ListMoviesVC.m in Sources */ = {isa = PBXBuildFile; fileRef = AFCC32591A56B44300C038CB /* ListMoviesVC.m */; };
 		AFCC32651A56B56400C038CB /* ALView+PureLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = AFCC325D1A56B56400C038CB /* ALView+PureLayout.m */; };
 		AFCC32661A56B56400C038CB /* NSArray+PureLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = AFCC325F1A56B56400C038CB /* NSArray+PureLayout.m */; };
 		AFCC32671A56B56400C038CB /* NSLayoutConstraint+PureLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = AFCC32611A56B56400C038CB /* NSLayoutConstraint+PureLayout.m */; };
@@ -137,7 +137,6 @@
 		AFCC32851A56B85C00C038CB /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AF2721981A52EAC2001D8E4F /* ImageIO.framework */; };
 		AFCC32881A56B88000C038CB /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AFCC32871A56B88000C038CB /* MapKit.framework */; };
 		AFCC328A1A56B89F00C038CB /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AFCC32891A56B89F00C038CB /* Accelerate.framework */; };
-		AFCC32961A56C29D00C038CB /* DetailsMovieVC.m in Sources */ = {isa = PBXBuildFile; fileRef = AFCC32951A56C29D00C038CB /* DetailsMovieVC.m */; };
 		CF0B6672170ECE9900A83D5E /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF0B6671170ECE9900A83D5E /* UIKit.framework */; };
 		CF0B6674170ECE9900A83D5E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF0B6673170ECE9900A83D5E /* Foundation.framework */; };
 		CF0B6676170ECE9900A83D5E /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF0B6675170ECE9900A83D5E /* CoreGraphics.framework */; };
@@ -335,6 +334,10 @@
 		AF2721D21A53096C001D8E4F /* movies.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = movies.xml; sourceTree = "<group>"; };
 		AF949C6D1A56CA7300650D8E /* IMMovie+Utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "IMMovie+Utils.h"; sourceTree = "<group>"; };
 		AF949C6E1A56CA7300650D8E /* IMMovie+Utils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "IMMovie+Utils.m"; sourceTree = "<group>"; };
+		AF949C711A56DD0400650D8E /* DetailsMovieVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailsMovieVC.h; sourceTree = "<group>"; };
+		AF949C721A56DD0400650D8E /* DetailsMovieVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailsMovieVC.m; sourceTree = "<group>"; };
+		AF949C741A56DD0400650D8E /* ListMoviesVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ListMoviesVC.h; sourceTree = "<group>"; };
+		AF949C751A56DD0400650D8E /* ListMoviesVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ListMoviesVC.m; sourceTree = "<group>"; };
 		AFCC32111A56ACAA00C038CB /* CellMovie.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CellMovie.h; sourceTree = "<group>"; };
 		AFCC32121A56ACAA00C038CB /* CellMovie.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CellMovie.m; sourceTree = "<group>"; };
 		AFCC32151A56ADE100C038CB /* MKAnnotationView+WebCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MKAnnotationView+WebCache.h"; sourceTree = "<group>"; };
@@ -371,12 +374,8 @@
 		AFCC32341A56ADE100C038CB /* UIView+WebCacheOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+WebCacheOperation.h"; sourceTree = "<group>"; };
 		AFCC32351A56ADE100C038CB /* UIView+WebCacheOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+WebCacheOperation.m"; sourceTree = "<group>"; };
 		AFCC32461A56B0FB00C038CB /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		AFCC324F1A56B35500C038CB /* MainTBC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainTBC.h; sourceTree = "<group>"; };
-		AFCC32501A56B35500C038CB /* MainTBC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainTBC.m; sourceTree = "<group>"; };
 		AFCC32511A56B35500C038CB /* BlankVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BlankVC.h; sourceTree = "<group>"; };
 		AFCC32521A56B35500C038CB /* BlankVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BlankVC.m; sourceTree = "<group>"; };
-		AFCC32581A56B44300C038CB /* ListMoviesVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ListMoviesVC.h; sourceTree = "<group>"; };
-		AFCC32591A56B44300C038CB /* ListMoviesVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ListMoviesVC.m; sourceTree = "<group>"; };
 		AFCC325C1A56B56400C038CB /* ALView+PureLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ALView+PureLayout.h"; sourceTree = "<group>"; };
 		AFCC325D1A56B56400C038CB /* ALView+PureLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "ALView+PureLayout.m"; sourceTree = "<group>"; };
 		AFCC325E1A56B56400C038CB /* NSArray+PureLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+PureLayout.h"; sourceTree = "<group>"; };
@@ -401,8 +400,6 @@
 		AFCC32841A56B78900C038CB /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
 		AFCC32871A56B88000C038CB /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		AFCC32891A56B89F00C038CB /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
-		AFCC32941A56C29D00C038CB /* DetailsMovieVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailsMovieVC.h; sourceTree = "<group>"; };
-		AFCC32951A56C29D00C038CB /* DetailsMovieVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailsMovieVC.m; sourceTree = "<group>"; };
 		CF0B666E170ECE9900A83D5E /* iTunesMovies.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iTunesMovies.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CF0B6671170ECE9900A83D5E /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		CF0B6673170ECE9900A83D5E /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -932,6 +929,31 @@
 			path = Resources;
 			sourceTree = "<group>";
 		};
+		AF949C701A56DD0400650D8E /* DetailsMovieVC */ = {
+			isa = PBXGroup;
+			children = (
+				AF949C711A56DD0400650D8E /* DetailsMovieVC.h */,
+				AF949C721A56DD0400650D8E /* DetailsMovieVC.m */,
+			);
+			path = DetailsMovieVC;
+			sourceTree = "<group>";
+		};
+		AF949C731A56DD0400650D8E /* ListMoviesVC */ = {
+			isa = PBXGroup;
+			children = (
+				AF949C741A56DD0400650D8E /* ListMoviesVC.h */,
+				AF949C751A56DD0400650D8E /* ListMoviesVC.m */,
+			);
+			path = ListMoviesVC;
+			sourceTree = "<group>";
+		};
+		AF949C7C1A56DF0F00650D8E /* DataSources */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = DataSources;
+			sourceTree = "<group>";
+		};
 		AFCC320F1A56ACAA00C038CB /* Cells */ = {
 			isa = PBXGroup;
 			children = (
@@ -988,26 +1010,6 @@
 			);
 			name = SDWebImage;
 			path = ProjectTemplate/Frameworks/SDWebImage;
-			sourceTree = "<group>";
-		};
-		AFCC32481A56B35500C038CB /* MainTBC */ = {
-			isa = PBXGroup;
-			children = (
-				AFCC324F1A56B35500C038CB /* MainTBC.h */,
-				AFCC32501A56B35500C038CB /* MainTBC.m */,
-				AFCC32931A56C29D00C038CB /* DetailsMovieVC */,
-				AFCC32571A56B44300C038CB /* ListMoviesVC */,
-			);
-			path = MainTBC;
-			sourceTree = "<group>";
-		};
-		AFCC32571A56B44300C038CB /* ListMoviesVC */ = {
-			isa = PBXGroup;
-			children = (
-				AFCC32581A56B44300C038CB /* ListMoviesVC.h */,
-				AFCC32591A56B44300C038CB /* ListMoviesVC.m */,
-			);
-			path = ListMoviesVC;
 			sourceTree = "<group>";
 		};
 		AFCC325B1A56B56400C038CB /* PureLayout */ = {
@@ -1085,15 +1087,6 @@
 			path = Constants;
 			sourceTree = "<group>";
 		};
-		AFCC32931A56C29D00C038CB /* DetailsMovieVC */ = {
-			isa = PBXGroup;
-			children = (
-				AFCC32941A56C29D00C038CB /* DetailsMovieVC.h */,
-				AFCC32951A56C29D00C038CB /* DetailsMovieVC.m */,
-			);
-			path = DetailsMovieVC;
-			sourceTree = "<group>";
-		};
 		CF0B6665170ECE9800A83D5E = {
 			isa = PBXGroup;
 			children = (
@@ -1158,6 +1151,7 @@
 				CF0B6695170ECF3000A83D5E /* AppDelegate */,
 				AFCC320F1A56ACAA00C038CB /* Cells */,
 				20DBFCCD188954E900B074D8 /* Views */,
+				AF949C7C1A56DF0F00650D8E /* DataSources */,
 				CF0B6698170ECF3000A83D5E /* Controllers */,
 				CF989F0818217D40002F15E9 /* Categories */,
 				CF989F0918217D40002F15E9 /* Helpers */,
@@ -1178,7 +1172,8 @@
 		CF0B6698170ECF3000A83D5E /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				AFCC32481A56B35500C038CB /* MainTBC */,
+				AF949C731A56DD0400650D8E /* ListMoviesVC */,
+				AF949C701A56DD0400650D8E /* DetailsMovieVC */,
 				AFCC32511A56B35500C038CB /* BlankVC.h */,
 				AFCC32521A56B35500C038CB /* BlankVC.m */,
 			);
@@ -1373,7 +1368,6 @@
 				9A35885C19E3F60400F79EB3 /* AFHTTPSessionManager.m in Sources */,
 				AF1918F21A544A5100DEE40A /* MagicalImportFunctions.m in Sources */,
 				AF1919101A544AD700DEE40A /* IMMovie+DBOperations.m in Sources */,
-				AFCC325A1A56B44300C038CB /* ListMoviesVC.m in Sources */,
 				AFCC32421A56ADE100C038CB /* UIImage+WebP.m in Sources */,
 				AF1918F51A544A5100DEE40A /* NSNumber+MagicalDataImport.m in Sources */,
 				AF1919091A544A5100DEE40A /* MagicalRecord+Setup.m in Sources */,
@@ -1390,7 +1384,6 @@
 				AFCC32451A56ADE100C038CB /* UIView+WebCacheOperation.m in Sources */,
 				9A35885E19E3F60400F79EB3 /* AFSecurityPolicy.m in Sources */,
 				AF1918FD1A544A5100DEE40A /* NSManagedObject+MagicalRequests.m in Sources */,
-				AFCC32961A56C29D00C038CB /* DetailsMovieVC.m in Sources */,
 				9A35882819E3F1A700F79EB3 /* HelperProgressHud.m in Sources */,
 				9A35878919E3F15B00F79EB3 /* TSMessageView.m in Sources */,
 				9A35872819E3F12A00F79EB3 /* NSString+HTML.m in Sources */,
@@ -1411,6 +1404,7 @@
 				AF1918FC1A544A5100DEE40A /* NSManagedObject+MagicalRecord.m in Sources */,
 				AF1918F71A544A5100DEE40A /* NSRelationshipDescription+MagicalDataImport.m in Sources */,
 				AFCC32411A56ADE100C038CB /* UIImage+MultiFormat.m in Sources */,
+				AF949C771A56DD0400650D8E /* ListMoviesVC.m in Sources */,
 				AF1919111A544AD700DEE40A /* IMMovie+Favorites.m in Sources */,
 				9A35878A19E3F15B00F79EB3 /* UIAlertView+Blocks.m in Sources */,
 				AFCC32361A56ADE100C038CB /* MKAnnotationView+WebCache.m in Sources */,
@@ -1423,6 +1417,7 @@
 				AFCC323E1A56ADE100C038CB /* SDWebImagePrefetcher.m in Sources */,
 				9A35872F19E3F12A00F79EB3 /* UINavigationController+Rotation.m in Sources */,
 				AFCC327F1A56B69B00C038CB /* UIImage+ImageEffects.m in Sources */,
+				AF949C761A56DD0400650D8E /* DetailsMovieVC.m in Sources */,
 				AFCC323A1A56ADE100C038CB /* SDWebImageDecoder.m in Sources */,
 				AFCC32401A56ADE100C038CB /* UIImage+GIF.m in Sources */,
 				AF1918B31A5449AD00DEE40A /* IMMovie.m in Sources */,
@@ -1448,7 +1443,6 @@
 				AFCC323D1A56ADE100C038CB /* SDWebImageManager.m in Sources */,
 				AFCC323C1A56ADE100C038CB /* SDWebImageDownloaderOperation.m in Sources */,
 				9A35882A19E3F1A700F79EB3 /* SVProgressHUD.m in Sources */,
-				AFCC32551A56B35500C038CB /* MainTBC.m in Sources */,
 				9A35885A19E3F60400F79EB3 /* AFHTTPRequestOperation.m in Sources */,
 				AFCC326F1A56B5FC00C038CB /* UIViewController+Extras.m in Sources */,
 				AF1918F91A544A5100DEE40A /* NSManagedObject+MagicalAggregation.m in Sources */,
