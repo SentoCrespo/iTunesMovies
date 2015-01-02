@@ -104,6 +104,7 @@
 - (void) initUI
 {
     [self addImageToLeftInNavigationBar:[UIImage imageNamed:@"movieReel"]];
+    [self reloadData];
 }
 
 
