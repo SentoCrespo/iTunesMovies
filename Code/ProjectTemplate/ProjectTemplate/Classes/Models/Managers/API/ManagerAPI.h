@@ -31,6 +31,7 @@
 
 /**
  *  Downloads the movies XML from Apple
+ *  (AFNetworking)
  *
  *  @param successBlock Contains the NXSMLParser
  *  @param failureBlock
@@ -46,6 +47,7 @@
 /**
  *  Creates the url and checks if it's a valid one.
  *  Downloads the given data and checks for errors.
+ *  (NSURL)
  *
  *  @param urlString       Url String
  *  @param successBlock

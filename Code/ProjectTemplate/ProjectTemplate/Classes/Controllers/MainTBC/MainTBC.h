@@ -10,9 +10,12 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UIViewController
+@interface MainTBC : UITabBarController
 
-#pragma mark - Outlets
+#pragma mark - Properties
+
+
+#pragma mark - Methods
 
 
 @end
