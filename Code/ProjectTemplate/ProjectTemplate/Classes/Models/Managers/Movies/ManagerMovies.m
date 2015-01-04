@@ -40,17 +40,23 @@
                                       [IMMovie createFromArray:data
                                                   successBlock:^{
                                                       successBlock? successBlock() : nil;
+                                                      completionBlock? completionBlock() : nil;
                                                   } failureBlock:^(NSError *error) {
-                                                      ;
+                                                      failureBlock? failureBlock(error) : nil;
+                                                      completionBlock? completionBlock() : nil;
                                                   }];
                                       
                                   }
-                                  failureBlock:failureBlock
-                               completionBlock:completionBlock];
+                                  failureBlock:^(NSError *error) {
+                                      failureBlock? failureBlock(error) : nil;
+                                      completionBlock? completionBlock() : nil;
+                                  }];
         
     }
-                failureBlock:failureBlock
-             completionBlock:completionBlock];
+                failureBlock:^(NSError *error) {
+                    failureBlock? failureBlock(error) : nil;
+                    completionBlock? completionBlock() : nil;
+                }];
     
 }
 
@@ -66,14 +72,13 @@
         
         [_managerParseXML parseMoviesXMLParser:data
                                   successBlock:successBlock
-                                  failureBlock:failureBlock
-                               completionBlock:completionBlock];
+                                  failureBlock:failureBlock];
         
     } failureBlock:^(NSError *error) {
         failureBlock? failureBlock(error) : nil;
         completionBlock? completionBlock() : nil;
         
-    } completionBlock:nil];
+    }];
     
 }
 

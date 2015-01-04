@@ -1,2 +1,29 @@
+/******************************************************************************
+ *
+ * iTunes Movies
+ *
+ * Created by Vicente Crespo Penadés - vicente.crespo.penades@gmail.com
+ * Copyright (c) 2015 Vicente Crespo  All rights reserved.
+ *
+ ******************************************************************************/
+
+
+//
+// TAB BAR
+//
+
+"TABBAR_LIST_MOVIES_TITLE"      = "Películas";
+"TABBAR_LIST_FAVORITES_TITLE"   = "Favoritas";
+
+//
+// MOVIES LIST
+//
+
+"LIST_NO_DATA" = "There are no movies yet";
+"LIST_DOWNLOAD_ERROR_TITLE" = "Download failed";
+"LIST_DOWNLOAD_ERROR_TEXT"  = "Check your Internet connection and try again";
+
+
+
 
 

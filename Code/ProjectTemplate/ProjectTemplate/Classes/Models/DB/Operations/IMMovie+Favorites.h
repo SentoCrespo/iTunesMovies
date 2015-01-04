@@ -17,7 +17,7 @@
 
 #pragma mark Read
 
-+ (NSArray *) readAllFavoritesSortedByDate;
++ (NSArray *) readAllFavorites;
 
 + (NSInteger) readAllFavoritesCount;
 
@@ -35,6 +35,8 @@
 #pragma mark - Testing
 
 #pragma mark - Utils
+
++ (NSPredicate *) predicateForFavorites;
 
 - (BOOL) isFavoriteBool;
 

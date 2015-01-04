@@ -61,8 +61,7 @@
                                                 @"Parsing should success with data");
                                 [expectation fulfill];
                             }
-                            failureBlock:nil
-                         completionBlock:nil];
+                            failureBlock:nil];
     
     // Then
     [self waitForExpectationsWithTimeout:0.2
@@ -89,8 +88,7 @@
                                 @"Parse should contain %ld objects", (long)numberOfObjects);
                                 [expectation fulfill];
                             }
-                            failureBlock:nil
-                         completionBlock:nil];
+                            failureBlock:nil];
     
     // Then
     [self waitForExpectationsWithTimeout:0.4
@@ -114,8 +112,7 @@
                             failureBlock:^(NSError *error) {
                                 XCTAssert(YES, @"Nil data should fail");
                                 [expectation fulfill];
-                            }
-                         completionBlock:nil];
+                            }];
     
     // Then
     [self waitForExpectationsWithTimeout:0.4
@@ -171,8 +168,7 @@
                                                       @"Category date should be parsed correctly");
                                 [expectation fulfill];
                             }
-                            failureBlock:nil
-                         completionBlock:nil];
+                            failureBlock:nil];
     
     // Then
     [self waitForExpectationsWithTimeout:0.4

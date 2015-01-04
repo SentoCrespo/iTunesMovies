@@ -156,7 +156,10 @@
 
 + (void) deleteAllItems
 {
-    [IMMovie MR_truncateAll];
+    [MagicalRecord saveWithBlockAndWait:^(NSManagedObjectContext *localContext) {
+        [IMMovie MR_truncateAllInContext:localContext];
+    }];
+    
 }
 
 

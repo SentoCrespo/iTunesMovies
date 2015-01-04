@@ -24,7 +24,6 @@
 
     @property (nonatomic, copy) void(^successBlock)(id data);
     @property (nonatomic, copy) void(^failureBlock)(NSError *error);
-    @property (nonatomic, copy) void(^completionBlock)(void);
 
 @end
 
@@ -45,11 +44,9 @@
 - (void) parseMoviesXMLData: (NSData *) data
                successBlock: (void (^)(id data)) successBlock
                failureBlock: (void (^)(NSError *error)) failureBlock
-            completionBlock: (void (^)(void)) completionBlock
 {
     if (!data || !data.length) {
         failureBlock? failureBlock([NSError errorWithDomain:@"No data" code:404 userInfo:nil]) : nil;
-        completionBlock? completionBlock() : nil;
         return;
     }
     
@@ -57,26 +54,23 @@
     
     [self parseMoviesXMLParser:parser
                   successBlock:successBlock
-                  failureBlock:failureBlock
-               completionBlock:completionBlock];
+                  failureBlock:failureBlock];
 }
 
 
 - (void) parseMoviesXMLParser: (NSXMLParser *) parser
                  successBlock: (void (^)(id data)) successBlock
                  failureBlock: (void (^)(NSError *error)) failureBlock
-              completionBlock: (void (^)(void)) completionBlock
 {
     
     if (!parser) {
         failureBlock? failureBlock([NSError errorWithDomain:@"No parser" code:404 userInfo:nil]) : nil;
-        completionBlock? completionBlock() : nil;
         return;
     }
     
     _successBlock = successBlock;
     _failureBlock = failureBlock;
-    _completionBlock = completionBlock;
+
     
     _xmlParser = parser;
     _xmlParser.delegate = self;
@@ -98,15 +92,12 @@
 -(void)parserDidEndDocument:(NSXMLParser *)parser
 {
     _successBlock? _successBlock(_dataParsed) : nil;
-    _completionBlock? _completionBlock() : nil;
 }
 
 
 -(void)parser:(NSXMLParser *)parser parseErrorOccurred:(NSError *)parseError
 {
     _failureBlock? _failureBlock(parseError) : nil;
-    _completionBlock? _completionBlock() : nil;
-
 }
 
 

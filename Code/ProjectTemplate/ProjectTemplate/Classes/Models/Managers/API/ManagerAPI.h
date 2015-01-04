@@ -31,14 +31,13 @@
 
 /**
  *  Downloads the movies XML from Apple
+ *  (AFNetworking)
  *
  *  @param successBlock Contains the NXSMLParser
  *  @param failureBlock
- *  @param completionBlock
  */
 + (void) getMoviesXML: (void(^)(id data)) successBlock
-         failureBlock: (void(^)(NSError *error)) failureBlock
-      completionBlock: (void(^)(void)) completionBlock;
+         failureBlock: (void(^)(NSError *error)) failureBlock;
 
 
 #pragma mark - RAW Data Download
@@ -46,16 +45,15 @@
 /**
  *  Creates the url and checks if it's a valid one.
  *  Downloads the given data and checks for errors.
+ *  (NSURL)
  *
  *  @param urlString       Url String
  *  @param successBlock
  *  @param failureBlock
- *  @param completionBlock 
  */
 + (void) downloadDataFromURL: (NSString *) urlString
                 successBlock: (void (^)(id data)) successBlock
-                failureBlock: (void (^)(NSError *error)) failureBlock
-             completionBlock: (void (^)(void)) completionBlock;
+                failureBlock: (void (^)(NSError *error)) failureBlock;
 
 
 #pragma mark - General operations

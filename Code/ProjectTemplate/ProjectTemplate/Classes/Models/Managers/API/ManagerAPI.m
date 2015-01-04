@@ -83,7 +83,6 @@
 
 + (void) getMoviesXML: (void(^)(id data)) successBlock
          failureBlock: (void(^)(NSError *error)) failureBlock
-      completionBlock: (void(^)(void)) completionBlock
 {
     [self getWithRestMethod:@"/es/rss/topmovies/limit=50/genre=4401/xml"
              WithParameters:nil
@@ -91,12 +90,10 @@
             
             if (error || statusCode!=200 || !data) {
                 failureBlock? failureBlock(error) : nil;
-                completionBlock? completionBlock() : nil;
                 return;
             }
             
             successBlock? successBlock(data) : nil;
-            completionBlock? completionBlock() : nil;
             return;
         }];
     
@@ -109,7 +106,6 @@
 + (void) downloadDataFromURL: (NSString *) urlString
                 successBlock: (void (^)(id data)) successBlock
                 failureBlock: (void (^)(NSError *error)) failureBlock
-             completionBlock: (void (^)(void)) completionBlock
 {
     NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
     
@@ -120,7 +116,6 @@
         failureBlock? failureBlock([NSError errorWithDomain:@"Invalid url"
                                                        code:404
                                                    userInfo:nil]) : nil;
-        completionBlock? completionBlock() : nil;
         return;
     }
     
@@ -129,7 +124,6 @@
         // Check for error
         if (error != nil) {
             failureBlock? failureBlock(error) : nil;
-            completionBlock? completionBlock() : nil;
             return;
         }
         
@@ -140,13 +134,11 @@
             failureBlock? failureBlock([NSError errorWithDomain:@"Not 200 OK"
                                                            code:statusCode
                                                        userInfo:nil]) : nil;
-            completionBlock? completionBlock() : nil;
             return;
         }
         
         [[NSOperationQueue mainQueue] addOperationWithBlock:^{
             successBlock? successBlock(data) : nil;
-            completionBlock? completionBlock() : nil;
             return;
         }];
         

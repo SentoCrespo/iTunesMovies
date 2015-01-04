@@ -20,18 +20,16 @@
 
 #pragma mark Read
 
-+ (NSArray *) readAllFavoritesSortedByDate
++ (NSArray *) readAllFavorites
 {
     NSArray *items = [IMMovie MR_findByAttribute:@"isFavorite"
-                                       withValue:@(YES)
-                                      andOrderBy:@"date"
-                                       ascending:NO];
+                                       withValue:@(YES)];
     return items;
 }
 
 + (NSInteger) readAllFavoritesCount;
 {
-    return [self readAllFavoritesSortedByDate].count;
+    return [IMMovie MR_countOfEntitiesWithPredicate:[self predicateForFavorites]];
 }
 
 
@@ -75,6 +73,13 @@
 
 
 #pragma mark - Utils
+
++ (NSPredicate *) predicateForFavorites
+{
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"isFavorite == YES"];
+    return predicate;
+}
+
 
 - (BOOL) isFavoriteBool
 {

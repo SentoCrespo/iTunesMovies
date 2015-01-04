@@ -3,18 +3,18 @@
  * iTunes Movies
  *
  * Created by Vicente Crespo Penadés - vicente.crespo.penades@gmail.com
- * Copyright (c) 2015 Vicente Crespo  All rights reserved.
+ * Copyright (c) 2015 - All rights reserved.
  *
  ******************************************************************************/
 
+#import "IMMovie.h"
 
-#import <UIKit/UIKit.h>
+@interface IMMovie (Utils)
 
-@interface ViewController : UIViewController
+#pragma mark - Utils
 
-#pragma mark - Outlets
-@property (weak, nonatomic) IBOutlet UIView *viewTopBar;
-@property (weak, nonatomic) IBOutlet UITableView *tvTable;
+- (NSString *) dateFormatted;
 
+- (UIImage *) imageFavorite;
 
 @end
