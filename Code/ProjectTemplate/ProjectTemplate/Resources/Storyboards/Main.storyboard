@@ -140,6 +140,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="6mx-d8-OMF">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                            </imageView>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SPS-rg-g2W">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <subviews>
@@ -181,7 +184,7 @@
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Jul, 19 2013" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j9L-7Z-jQI">
                                                 <rect key="frame" x="141" y="104" width="69.5" height="15.5"/>
                                                 <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="13"/>
-                                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XUl-sc-IME">
@@ -240,11 +243,15 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="centerY" secondItem="SPS-rg-g2W" secondAttribute="centerY" id="QQD-gs-cvh"/>
+                            <constraint firstAttribute="centerX" secondItem="6mx-d8-OMF" secondAttribute="centerX" id="Qxs-qG-CRE"/>
                             <constraint firstItem="SPS-rg-g2W" firstAttribute="height" secondItem="qEC-6D-h0C" secondAttribute="height" id="R4H-uA-bb6"/>
                             <constraint firstAttribute="centerX" secondItem="SPS-rg-g2W" secondAttribute="centerX" id="lNB-W3-MZU"/>
                             <constraint firstAttribute="height" secondItem="6G0-a1-wfO" secondAttribute="height" id="lgd-yy-8DM"/>
                             <constraint firstItem="SPS-rg-g2W" firstAttribute="width" secondItem="qEC-6D-h0C" secondAttribute="width" id="n6b-DR-I8b"/>
+                            <constraint firstItem="6mx-d8-OMF" firstAttribute="width" secondItem="qEC-6D-h0C" secondAttribute="width" id="qnL-7o-fgI"/>
                             <constraint firstAttribute="width" secondItem="6G0-a1-wfO" secondAttribute="width" id="uNC-im-6rA"/>
+                            <constraint firstAttribute="centerY" secondItem="6mx-d8-OMF" secondAttribute="centerY" id="waV-ga-U55"/>
+                            <constraint firstItem="6mx-d8-OMF" firstAttribute="height" secondItem="qEC-6D-h0C" secondAttribute="height" id="zaC-pD-V2f"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
@@ -261,6 +268,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="btFavorite" destination="O0l-oo-kdZ" id="v6R-FE-ePn"/>
+                        <outlet property="imgBackground" destination="6mx-d8-OMF" id="mnl-Oz-GC1"/>
                         <outlet property="imgMovie" destination="EuV-Jg-UmV" id="kfw-qP-9qd"/>
                         <outlet property="lbArtist" destination="Rwy-3d-CVi" id="nu9-5Q-Dqo"/>
                         <outlet property="lbCategory" destination="oV8-2p-AHH" id="zve-5Q-fqH"/>

@@ -22,7 +22,6 @@
 #define indexFavorites  1
 
 
-
 @interface ListMoviesVC () <NSFetchedResultsControllerDelegate>
 
     @property (strong, nonatomic) NSFetchedResultsController *fetchedResultsController;
@@ -199,7 +198,11 @@
 
 
 
-#warning Improvement: All this could be refactored into a DS/Delegate so this class was about 150 lines, and the responsibility was reduced
+/*
+ 
+ Improvement: All this could be refactored into a DS/Delegate so this class was less than 200 lines and the responsibility was reduced
+ 
+*/
 
 
 #pragma mark - UICollectionVIew

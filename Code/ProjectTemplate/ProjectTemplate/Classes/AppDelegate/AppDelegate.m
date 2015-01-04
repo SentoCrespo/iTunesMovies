@@ -17,6 +17,12 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    
+    // It would be nice to include in a real world app something that:
+    // * Defines the environment [dev | prod].
+    // * If it's prod, doesn't print any NSLog to the console.
+    // * ManagerAPI is based on it to fetch the urls.
+    
  
     // Core Data
     [MagicalRecord setupAutoMigratingCoreDataStack];

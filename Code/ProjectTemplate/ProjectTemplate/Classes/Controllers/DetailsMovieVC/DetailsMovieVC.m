@@ -11,6 +11,8 @@
 #import "DetailsMovieVC.h"
 
 #import "UIImageView+WebCache.h"
+#import "UIImage+Resize.h"
+
 
 @interface DetailsMovieVC ()
 
@@ -27,8 +29,16 @@
     
     [self initViewController];
     
+
 }
 
+
+- (void)viewDidLayoutSubviews
+{
+    // Adjust the scrollview y0
+    CGFloat topBarOffset = self.topLayoutGuide.length;
+    _svContent.contentInset = UIEdgeInsetsMake(topBarOffset, 0, 0, 0);
+}
 
 #pragma mark - Init
 
@@ -53,23 +63,42 @@
 
 - (void) initUI
 {
+    // Movie data
     
     _lbTitle.text       = _movie.name;
-    
     _lbArtist.text      = _movie.artist;
-    
     _lbCategory.text    = [NSString stringWithFormat:@"(%@)",
                         _movie.category];
-    
     _lbReleaseDate.text = [NSString stringWithFormat:@"%@",
                            [_movie dateFormatted]];
-    
     _lbSummary.text = _movie.summary;
-    
     [_imgMovie sd_setImageWithURL:[NSURL URLWithString:_movie.image]];
+    
+    // Favorite status
     
     UIImage *btImage = [_movie imageFavorite];
     [_btFavorite setImage:btImage];
+    
+    [self.view needsUpdateConstraints];
+    
+    // Background image
+    WEAKSELF(wS);
+    [_imgBackground sd_setImageWithURL:[NSURL URLWithString:_movie.image] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
+        
+        UIImage *newImage = [image resizedImage:_imgBackground.size
+                           interpolationQuality:kCGInterpolationHigh];
+        
+        UIVisualEffect *blurEffect = [UIBlurEffect effectWithStyle:UIBlurEffectStyleExtraLight];
+        UIVisualEffectView *visualEffectView = [[UIVisualEffectView alloc] initWithEffect:blurEffect];
+        visualEffectView.frame = _imgBackground.bounds;
+        
+        wS.imgBackground.image = newImage;
+        
+        [wS.imgBackground addSubview:visualEffectView];
+        
+    }];
+    
+    
 
 }
 

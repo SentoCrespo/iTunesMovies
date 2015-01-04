@@ -21,6 +21,8 @@
 
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *btFavorite;
 
+@property (weak, nonatomic) IBOutlet UIImageView *imgBackground;
+
 @property (weak, nonatomic) IBOutlet UIScrollView *svContent;
 @property (weak, nonatomic) IBOutlet UIView *viewContent;
 
