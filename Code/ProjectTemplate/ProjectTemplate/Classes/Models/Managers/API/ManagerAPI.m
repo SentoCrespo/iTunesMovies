@@ -84,7 +84,17 @@
 + (void) getMoviesXML: (void(^)(id data)) successBlock
          failureBlock: (void(^)(NSError *error)) failureBlock
 {
-    [self getWithRestMethod:@"/es/rss/topmovies/limit=50/genre=4401/xml"
+    
+    NSString *languageISO =[[NSLocale preferredLanguages] objectAtIndex:0];
+    if (![languageISO isEqualToString:@"en"] &&
+        ![languageISO isEqualToString:@"es"]) {
+        languageISO = @"en";
+    }
+    NSString *urlWithLanguage = [NSString stringWithFormat:@"/%@/%@",
+                                 languageISO,
+                                 @"rss/topmovies/limit=50/genre=4401/xml"];
+    
+    [self getWithRestMethod:urlWithLanguage
              WithParameters:nil
         withCompletionBlock:^(NSInteger statusCode, id data, NSError *error) {
             
