@@ -47,10 +47,16 @@
                                                   }];
                                       
                                   }
-                                  failureBlock:failureBlock];
+                                  failureBlock:^(NSError *error) {
+                                      failureBlock? failureBlock(error) : nil;
+                                      completionBlock? completionBlock() : nil;
+                                  }];
         
     }
-                failureBlock:failureBlock];
+                failureBlock:^(NSError *error) {
+                    failureBlock? failureBlock(error) : nil;
+                    completionBlock? completionBlock() : nil;
+                }];
     
 }
 
