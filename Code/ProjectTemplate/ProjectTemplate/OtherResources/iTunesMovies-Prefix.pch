@@ -1,0 +1,39 @@
+//
+// Prefix header for all source files of the 'ProjectTemplate' target in the 'ProjectTemplate' project
+//
+
+#import <Availability.h>
+
+#ifndef __IPHONE_5_0
+#warning "This project uses features only available in iOS SDK 5.0 and later."
+#endif
+
+#ifdef __OBJC__
+    #import <UIKit/UIKit.h>
+    #import <Foundation/Foundation.h>
+
+    // Frameworks
+    #import "CoreData+MagicalRecord.h"
+    #import "PureLayout.h"
+    #import "GBVersionTracking.h"
+    #import "HelperShowAlert.h"
+
+    // Structure
+    #import "IMMovie+DBOperations.h"
+    #import "IMMovie+Favorites.h"
+    #import "IMMovie+Utils.h"
+
+    // Categories
+    #import "NSObject+WeakSelf.h"
+    #import "UIViewController+Extras.h"
+    #import "UIView+FrameAccessor.h"
+    #import "NSString+NSStringExtensions.h"
+
+    // Utility
+    #import "HelperShowAlert.h"
+
+    // Project
+    #import "ManagerAPI.h"
+
+
+#endif

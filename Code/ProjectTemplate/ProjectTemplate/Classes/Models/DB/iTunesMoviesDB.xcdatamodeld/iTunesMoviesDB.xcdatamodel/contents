@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="6254" systemVersion="14B25" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
+    <entity name="IMMovie" representedClassName="IMMovie" syncable="YES">
+        <attribute name="artist" optional="YES" attributeType="String" syncable="YES">
+            <userInfo>
+                <entry key="mappedKeyName" value="im:artist"/>
+            </userInfo>
+        </attribute>
+        <attribute name="category" optional="YES" attributeType="String" syncable="YES">
+            <userInfo>
+                <entry key="mappedKeyName" value="category"/>
+            </userInfo>
+        </attribute>
+        <attribute name="identifier" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES">
+            <userInfo>
+                <entry key="mappedKeyName" value="im:id"/>
+            </userInfo>
+        </attribute>
+        <attribute name="image" optional="YES" attributeType="String" syncable="YES">
+            <userInfo>
+                <entry key="mappedKeyName" value="im:image"/>
+            </userInfo>
+        </attribute>
+        <attribute name="isFavorite" optional="YES" attributeType="Boolean" defaultValueString="NO" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES">
+            <userInfo>
+                <entry key="mappedKeyName" value="im:name"/>
+            </userInfo>
+        </attribute>
+        <attribute name="releaseDate" optional="YES" attributeType="Date" syncable="YES">
+            <userInfo>
+                <entry key="mappedKeyName" value="im:releaseDate"/>
+            </userInfo>
+        </attribute>
+        <attribute name="summary" optional="YES" attributeType="String" syncable="YES">
+            <userInfo>
+                <entry key="mappedKeyName" value="summary"/>
+            </userInfo>
+        </attribute>
+        <userInfo>
+            <entry key="relatedByAttribute" value="identifier"/>
+        </userInfo>
+    </entity>
+    <elements>
+        <element name="IMMovie" positionX="-63" positionY="-18" width="128" height="165"/>
+    </elements>
+</model>
