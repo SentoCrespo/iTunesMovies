@@ -12,7 +12,7 @@ Pretty "simple". A list of movies [en|es] is fetched from iTunes (top 50) in XML
 ### Frameworks used
 
   * [SDWebImage] -> Async images download + cache. 
-  * [AFNetworking] -> Fetch movies, although I wrote another method to not depende on it.
+  * [AFNetworking] -> Fetch movies, although I wrote another method to not depend on it.
   * [Magical record] -> Core Data Wrapper
   * [GBVersionTracking] -> Not really using it but I think it's good to have some version control.
   * [Pure Layout] -> Autolayout wrapper
@@ -73,7 +73,7 @@ License
 MIT
 
 
-[LinkedIn]:http://daringfireball.net/
+[LinkedIn]:https://www.linkedin.com/profile/view?id=151887513
 [Email]:mailto:vicente.crespo.penades@gmail.com
 
 [SDWebImage]:https://github.com/rs/SDWebImage
