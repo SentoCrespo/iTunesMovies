@@ -63,25 +63,38 @@
 
 - (void) initUI
 {
-    // Movie data
     
+    [self fillMovieData];
+    
+    [self setFavoriteStatus];
+    
+    [self fillBackgroundBlurredImage];
+
+}
+
+
+#pragma mark - Data Fill
+
+- (void) fillMovieData
+{
     _lbTitle.text       = _movie.name;
     _lbArtist.text      = _movie.artist;
     _lbCategory.text    = [NSString stringWithFormat:@"(%@)",
-                        _movie.category];
+                           _movie.category];
     _lbReleaseDate.text = [NSString stringWithFormat:@"%@",
                            [_movie dateFormatted]];
     _lbSummary.text = _movie.summary;
     [_imgMovie sd_setImageWithURL:[NSURL URLWithString:_movie.image]];
-    
-    // Favorite status
-    
+}
+
+- (void) setFavoriteStatus
+{
     UIImage *btImage = [_movie imageFavorite];
     [_btFavorite setImage:btImage];
-    
-    [self.view needsUpdateConstraints];
-    
-    // Background image
+}
+
+- (void) fillBackgroundBlurredImage
+{
     WEAKSELF(wS);
     [_imgBackground sd_setImageWithURL:[NSURL URLWithString:_movie.image] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
         
@@ -97,11 +110,8 @@
         [wS.imgBackground addSubview:visualEffectView];
         
     }];
-    
-    
 
 }
-
 
 #pragma mark - IBActions
 
